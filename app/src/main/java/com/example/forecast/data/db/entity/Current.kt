@@ -16,7 +16,7 @@ data class  Current(
     val precip: Double,
     val pressure: Double,
     val temperature: Double,
-    val visibility: Int,
+    val visibility: Double,
     @SerializedName("weather_code")
     val weatherCode: Int,
     @SerializedName("weather_descriptions")

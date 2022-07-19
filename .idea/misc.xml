@@ -7,10 +7,12 @@
         <entry key="app/src/main/res/drawable/ic_settings.xml" value="0.1955" />
         <entry key="app/src/main/res/drawable/ic_today.xml" value="0.1955" />
         <entry key="app/src/main/res/drawable/ic_weather_sunny.xml" value="0.1955" />
+        <entry key="app/src/main/res/drawable/some_foreground.xml" value="0.163" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10914855072463768" />
-        <entry key="app/src/main/res/layout/fragment_current_weather.xml" value="0.10914855072463768" />
+        <entry key="app/src/main/res/layout/fragment_current_weather.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_future_list_weather.xml" value="0.10914855072463768" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.17291666666666666" />
+        <entry key="app/src/main/res/xml/preferences.xml" value="0.15364583333333334" />
       </map>
     </option>
   </component>
