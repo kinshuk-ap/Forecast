@@ -3,14 +3,16 @@ package com.example.forecast.data.db
 import android.content.Context
 import androidx.room.*
 import com.example.forecast.data.db.entity.Current
+import com.example.forecast.data.db.entity.Location
 
 @Database(
-    entities = [Current::class],
+    entities = [Current::class, Location::class],
     version = 1
 )
 @TypeConverters(Converters::class)
 abstract class ForecastDatabase: RoomDatabase() {
     abstract fun currentWeatherDao(): CurrentWeatherDao
+    abstract fun weatherLocationDao(): WeatherLocationDao
 
     companion object {
         @Volatile
