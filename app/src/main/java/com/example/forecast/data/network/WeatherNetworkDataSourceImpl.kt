@@ -8,7 +8,7 @@ import com.example.forecast.data.network.response.CurrentWeatherResponse
 import com.example.forecast.data.network.response.FutureWeatherResponse
 import com.example.forecast.internal.NoConnectivityException
 
-const val FUTURE_WEATHER_DAYS = 7
+const val FORECAST_DAYS_COUNT = 7
 
 class WeatherNetworkDataSourceImpl(
     private val apixuWeatherApiService: ApixuWeatherApiService,
@@ -35,7 +35,7 @@ class WeatherNetworkDataSourceImpl(
     override suspend fun fetchFutureWeather(location: String) {
         try {
             val fetchFutureWeather = apixuFutureWeatherApiService
-                .getFutureWeather(location, FUTURE_WEATHER_DAYS, "no", "no")
+                .getFutureWeather(location, FORECAST_DAYS_COUNT, "no", "no")
                 .await()
             _downloadedFutureWeather.postValue(fetchFutureWeather)
         } catch (e: NoConnectivityException) {

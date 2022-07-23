@@ -14,7 +14,7 @@ const val API_KEY = "da9b5c8475efd4baebf0b9df40fffbc5"
 // http://api.weatherstack.com/current?access_key=da9b5c8475efd4baebf0b9df40fffbc5&query=London
 
 interface ApixuWeatherApiService {
-    @GET("current.json")
+    @GET("current")
     fun getCurrentWeather(
         @Query("query")
         location: String
@@ -44,7 +44,7 @@ interface ApixuWeatherApiService {
 
             return Retrofit.Builder()
                 .client(okHttpClient)
-                .baseUrl("http://api.weatherapi.com/v1/")
+                .baseUrl("http://api.weatherstack.com/")
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()

@@ -2,9 +2,11 @@ package com.example.forecast.data.db.entity
 
 
 import androidx.room.Embedded
+import androidx.room.Entity
 import com.example.forecast.data.network.response.Condition
 import com.google.gson.annotations.SerializedName
 
+@Entity
 data class Day(
     @SerializedName("avgtemp_c")
     val avgtempC: Double,
