@@ -1,5 +1,6 @@
 package com.example.forecast.ui.weather.current
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -11,9 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.example.forecast.R
-import com.example.forecast.data.network.ApixuWeatherApiService
-import com.example.forecast.data.network.ConnectivityInterceptorImpl
-import com.example.forecast.data.network.WeatherNetworkDataSourceImpl
 import com.example.forecast.ui.base.ScopedFragment
 import kotlinx.android.synthetic.main.fragment_current_weather.*
 import kotlinx.coroutines.Dispatchers
@@ -27,22 +25,20 @@ class CurrentWeatherFragment : ScopedFragment(), KodeinAware {
     override val kodein by closestKodein()
 
     private val viewModelFactory: CurrentWeatherViewModelFactory by instance()
-
     private lateinit var viewModel: CurrentWeatherViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        viewModel = ViewModelProvider(this, viewModelFactory)
-            .get(CurrentWeatherViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory)[CurrentWeatherViewModel::class.java]
 
         bindUI()
         return inflater.inflate(R.layout.fragment_current_weather, container, false)
     }
 
     private fun bindUI() = launch{
-        val currentWeather = viewModel.weather.await()
+        val currentWeather  = viewModel.weather.await()
         val weatherLocation = viewModel.weatherLocation.await()
 
         weatherLocation.observe(viewLifecycleOwner, Observer { location ->

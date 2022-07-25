@@ -57,6 +57,13 @@ class ForecastRepositoryImpl(
         }
     }
 
+    override suspend fun getFutureWeatherByDate(date: LocalDate): LiveData<out FutureWeatherEntry> {
+        return withContext(Dispatchers.IO) {
+            initWeatherData()
+            return@withContext futureWeatherDao.getDetailedWeatherByDate(date)
+        }
+    }
+
     private fun persistFetchedCurrentWeather(fetchedWeather: CurrentWeatherResponse) {
         GlobalScope.launch(Dispatchers.IO){
             currentWeatherDao.upsert(fetchedWeather.current)
@@ -82,14 +89,14 @@ class ForecastRepositoryImpl(
         if(lastWeatherLocation == null
             || locationProvider.hasLocationChanged(lastWeatherLocation)) {
             fetchCurrentWeather()
-            fetchFutureWeahter()
+            fetchFutureWeather()
             return
         }
         if (isFetchCurrentNeeded(lastWeatherLocation.zonedDateTime)){
             fetchCurrentWeather()
         }
         if(isFutureWeatherNeeded()) {
-            fetchFutureWeahter()
+            fetchFutureWeather()
         }
     }
     private suspend fun fetchCurrentWeather() {
@@ -97,7 +104,7 @@ class ForecastRepositoryImpl(
             locationProvider.getPreferredLocationString()
         )
     }
-    private suspend fun fetchFutureWeahter() {
+    private suspend fun fetchFutureWeather() {
         weatherNetworkDataSource.fetchFutureWeather(
             locationProvider.getPreferredLocationString()
         )

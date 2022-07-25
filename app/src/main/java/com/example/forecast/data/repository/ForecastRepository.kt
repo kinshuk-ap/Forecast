@@ -9,5 +9,6 @@ import org.threeten.bp.LocalDate
 interface ForecastRepository {
     suspend fun getCurrentWeather(): LiveData<Current>
     suspend fun getFutureWeatherList(startDate: LocalDate): LiveData<out List<FutureWeatherEntry>>
+    suspend fun getFutureWeatherByDate(date: LocalDate): LiveData<out FutureWeatherEntry>
     suspend fun getWeatherLocation(): LiveData<Location>
 }

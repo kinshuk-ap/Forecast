@@ -1,16 +1,15 @@
-package com.example.forecast.ui.weather.future.list
+package com.example.forecast.ui.weather.future.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.forecast.data.repository.ForecastRepository
-import com.example.forecast.ui.weather.current.CurrentWeatherViewModel
+import org.threeten.bp.LocalDate
 
-class FutureListWeatherViewModelFactory(
+class FutureDetailWeatherViewModelFactory(
+    private val detailDate: LocalDate,
     private val forecastRepository: ForecastRepository
 ): ViewModelProvider.NewInstanceFactory() {
-
-    @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return FutureListWeatherViewModel(forecastRepository) as T
+        return FutureDetailWeatherViewModel(detailDate, forecastRepository) as T
     }
 }

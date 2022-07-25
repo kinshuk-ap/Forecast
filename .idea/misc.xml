@@ -11,7 +11,8 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10914855072463768" />
         <entry key="app/src/main/res/layout/fragment_current_weather.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_future_detail_weather.xml" value="0.19375" />
-        <entry key="app/src/main/res/layout/fragment_future_list_weather.xml" value="0.10914855072463768" />
+        <entry key="app/src/main/res/layout/fragment_future_list_weather.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/item_future_weather.xml" value="0.22" />
         <entry key="app/src/main/res/menu/bottom_nav.xml" value="0.17291666666666666" />
         <entry key="app/src/main/res/xml/preferences.xml" value="0.15364583333333334" />
       </map>
